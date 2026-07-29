@@ -46,6 +46,48 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* ---- Color  ---- */
+  --color-paper: #FAFAF7;
+  --color-paper-100: #F4F5F1;
+  --color-paper-200: #E9EAE3;
+
+  --color-ink-50: #EEF1F6;
+  --color-ink-100: #D6DCE8;
+  --color-ink-200: #B9C2D9;
+  --color-ink-300: #8C99B8;
+  --color-ink-400: #64729A;
+  --color-ink-500: #3D4E78;
+  --color-ink-600: #2A3A63;
+  --color-ink-700: #1E2C4F;
+  --color-ink-800: #16213D;
+  --color-ink-900: #0F1830;
+  --color-ink-950: #0A1122;
+
+  --color-rust: #E2691E;
+  --color-rust-50: #FDF1E7;
+  --color-rust-400: #EA8A47;
+  --color-rust-500: #E2691E;
+  --color-rust-600: #C4550F;
+  --color-rust-700: #9E440C;
+
+  --color-moss: #2F6E5E;
+  --color-moss-50: #EAF3F0;
+  --color-moss-400: #4A8C7A;
+  --color-moss-500: #2F6E5E;
+  --color-moss-600: #245549;
+
+  --color-brick: #B24A3C;
+  --color-brick-500: #B24A3C;
+
+  /* ---- Type tokens ---- */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  /* ---- Shadow tokens ---- */
+  --shadow-docket: 0 1px 0 rgba(15, 24, 48, 0.06), 0 8px 24px -12px rgba(15, 24, 48, 0.18);
+
 }
 
 :root {
@@ -121,9 +163,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }

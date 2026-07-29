@@ -45,3 +45,10 @@ export interface ApiErrorShape {
     message: string;
     errorDetails?: { path: string | number; message: string }[] | unknown;
 }
+
+
+export interface ActionState {
+    error?: string;
+    fieldErrors?: Record<string, string>;
+    success?: boolean;
+}

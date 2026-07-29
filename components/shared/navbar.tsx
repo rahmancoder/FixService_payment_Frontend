@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { logout } from '@/service/logout';
 import type { SessionPayload } from '@/utils/jwt';
 
 const dashboardHref: Record<string, string> = {
@@ -14,9 +15,6 @@ const dashboardHref: Record<string, string> = {
 };
 
 export default function Navbar({ session }: { session: SessionPayload | null }) {
-
-    // export default function Navbar() {
-
     const [open, setOpen] = useState(false);
     const pathname = usePathname();
 
@@ -51,13 +49,12 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                 </div>
 
                 <div className="hidden md:flex items-center gap-3">
-
                     {session ? (
                         <>
                             <Button asChild variant="outline">
                                 <Link href={dashboardHref[session.role] || '/'}>My dashboard</Link>
                             </Button>
-                            <form>
+                            <form action={logout}>
                                 <Button variant="ghost" type="submit">
                                     Sign out
                                 </Button>
@@ -68,8 +65,8 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                             <Button asChild variant="ghost">
                                 <Link href="/login">Sign in</Link>
                             </Button>
-                            <Button asChild variant="default">
-                                <Link href="/register">Register Now!</Link>
+                            <Button asChild variant="accent">
+                                <Link href="/register">Get started</Link>
                             </Button>
                         </>
                     )}
@@ -92,7 +89,6 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                         </Link>
                     ))}
                     <div className="flex flex-col gap-2 pt-2 border-t border-ink-100">
-
                         {session ? (
                             <>
                                 <Button asChild variant="outline" className="w-full">
@@ -100,7 +96,7 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                                         My dashboard
                                     </Link>
                                 </Button>
-                                <form >
+                                <form action={logout}>
                                     <Button variant="ghost" type="submit" className="w-full">
                                         Sign out
                                     </Button>
@@ -112,7 +108,7 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                                     <Link href="/login" onClick={() => setOpen(false)}>Sign in</Link>
                                 </Button>
                                 <Button asChild variant="accent" className="w-full">
-                                    <Link href="/register" onClick={() => setOpen(false)}>Register Now!</Link>
+                                    <Link href="/register" onClick={() => setOpen(false)}>Get started</Link>
                                 </Button>
                             </>
                         )}
