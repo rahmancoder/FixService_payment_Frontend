@@ -11,7 +11,14 @@ export interface User {
     technicianProfile?: TechnicianProfile | null;
 }
 
-
+export interface MeApiResponse {
+    success: boolean;
+    statusCode: number;
+    message: string;
+    data: {
+        result: User;
+    };
+}
 
 export interface TechnicianUser {
     id: string;
@@ -31,6 +38,10 @@ export interface TechnicianProfile {
     totalReviews: number;
     user: TechnicianUser;
 }
+
+
+
+
 
 
 export interface ApiResponse<T> {

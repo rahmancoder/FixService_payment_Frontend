@@ -2,7 +2,7 @@
 import { cookies } from 'next/headers';
 import { ACCESS_TOKEN_COOKIE, backendFetch } from '@/lib/backendFetch';
 import { verifyJwt, type SessionPayload } from '@/utils/jwt';
-import { ApiResponse, User } from '@/lib/types';
+import { ApiResponse, MeApiResponse, User } from '@/lib/types';
 
 
 export async function getSession(): Promise<SessionPayload | null> {
@@ -12,19 +12,24 @@ export async function getSession(): Promise<SessionPayload | null> {
   return verifyJwt(token);
 }
 
-/**
- * Full session read — calls GET /auth/me on the backend to get the latest
- * user record (status, technicianProfile, etc). Use this when you need more
- * than just { id, email, role }.
- */
+
+
+
 export async function getMe(): Promise<User | null> {
   const session = await getSession();
   if (!session) return null;
 
   try {
-    const res = await backendFetch<ApiResponse<User>>('/auth/me', { cache: 'no-store' });
-    return res.data;
-  } catch {
+    // const res = await backendFetch<any>('/auth/me', { cache: 'no-store' });
+
+    const res = await backendFetch<MeApiResponse>('/auth/me', { cache: 'no-store' });
+    // Handles: res.data.result | res.data.showUser | res.data.user | res.data
+    // const user = res?.data?.result || res?.data?.showUser || res?.data?.user || res?.data;
+    const user = res?.data?.result || res?.data || null;
+
+    return (user as User) || null;
+  } catch (error) {
+    console.error('Failed to fetch profile:', error);
     return null;
   }
 }
