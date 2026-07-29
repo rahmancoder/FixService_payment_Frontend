@@ -41,6 +41,15 @@ export interface TechnicianProfile {
 
 
 
+export interface Availability {
+    id: string;
+    dayOfWeek: string;
+    startTime: string;
+    endTime: string;
+    isActive: boolean;
+}
+
+
 
 
 
