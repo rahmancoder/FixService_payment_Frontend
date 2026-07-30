@@ -1,6 +1,7 @@
 import { getTechnicians } from '../_actions/getTechnicians';
 import TechnicianList from '../_components/technicians/TechnicianList';
 import { Badge } from '@/components/ui/badge';
+import TechnicianSearchBar from '../_components/technicians/TechnicianSearchBar';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,6 +27,8 @@ export default async function TechniciansPage({
                 </p>
             </div>
 
+
+            <TechnicianSearchBar searchParams={resolvedSearchParams} />
             <TechnicianList
                 technicians={technicians?.data ?? []}
                 page={page}

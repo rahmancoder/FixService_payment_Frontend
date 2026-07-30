@@ -16,9 +16,12 @@ async function getCategories(): Promise<Category[]> {
 export default async function ServicesPage({
     searchParams,
 }: {
-    searchParams: Record<string, string | undefined>;
+    // searchParams: Record<string, string | undefined>;
+    searchParams: Promise<Record<string, string | undefined>>;
 }) {
-    const [services, categories] = await Promise.all([getServices(searchParams), getCategories()]);
+
+    const resolvedSearchParams = await searchParams;
+    const [services, categories] = await Promise.all([getServices(resolvedSearchParams), getCategories()]);
     const page = services.meta?.page || 1;
     const totalPages = services.meta ? Math.ceil(services.meta.total / services.meta.limit) : 1;
 
@@ -36,11 +39,15 @@ export default async function ServicesPage({
 
             <div className="grid lg:grid-cols-[240px_1fr] gap-8">
                 <aside>
-                    <ServiceSearchBar categories={categories} searchParams={searchParams} />
+                    {/* <ServiceSearchBar categories={categories} searchParams={searchParams} /> */}
+                    <ServiceSearchBar categories={categories} searchParams={resolvedSearchParams} />
+
                 </aside>
 
                 <div>
-                    <ServiceList services={services.data} page={page} totalPages={totalPages} searchParams={searchParams} />
+                    {/* <ServiceList services={services.data} page={page} totalPages={totalPages} searchParams={searchParams} /> */}
+                    <ServiceList services={services.data} page={page} totalPages={totalPages} searchParams={resolvedSearchParams} />
+
                 </div>
             </div>
         </div>
