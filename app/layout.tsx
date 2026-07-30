@@ -26,7 +26,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'FixItNow — Home services, dispatched fast',
+  title: 'FixService-Payment — Home services, Afordable and fast',
   description:
     'Book verified plumbers, electricians, cleaners and more. Track every job from request to completion.',
 };
