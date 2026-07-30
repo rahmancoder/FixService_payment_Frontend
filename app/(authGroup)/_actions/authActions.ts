@@ -81,19 +81,17 @@ export async function loginAction(data: LoginFormValues, next?: string): Promise
 
 
 
+
+
 export async function registerAction(data: RegisterFormValues): Promise<ActionState> {
     let res: Response;
     try {
         res = await fetch(`${API_URL}/auth/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            // body: JSON.stringify({ ...data}),
-
             body: JSON.stringify(data),
         });
-    }
-
-    catch {
+    } catch {
         return { error: 'Could not reach the server. Please try again.' };
     }
 
@@ -103,10 +101,19 @@ export async function registerAction(data: RegisterFormValues): Promise<ActionSt
         return { error: json?.message || 'Registration failed' };
     }
 
-    // const { accessToken, refreshToken, user } = json.data;
-    const { accessToken, refreshToken, showUser } = json.data || {};
+    // 1. Destructure 'user' from backend (or alias it: user: showUser)
+    // const { accessToken, refreshToken, user } = json.data || {};
 
-    await setAuthCookies(accessToken, refreshToken);
+    // await setAuthCookies(accessToken, refreshToken);
 
-    redirect(dashboardByRole[showUser.role] || '/');
+    // 2. Use optional chaining (user?.role) so it doesn't crash if role is missing
+    // const userRole = user?.role;
+    // const targetPath = userRole ? dashboardByRole[userRole] : '/login';
+
+    // redirect(targetPath);
+
+
+    // after successful login
+    // Return success instead of redirecting
+    return { success: true || 'Registration successful!' };
 }
