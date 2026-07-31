@@ -1,3 +1,4 @@
+import Link from 'next/link';
 
 import { API_URL } from '@/lib/backendFetch';
 import Image from 'next/image';
@@ -132,6 +133,26 @@ export default async function HomePage() {
 
             {/* ---------- CTA ---------- */}
             <section className="mx-auto max-w-6xl px-5 pb-24">
+                <div className="grid md:grid-cols-2 gap-5">
+                    <div className="docket p-8 bg-rust-50 border-rust/20">
+                        <h3 className="font-display text-2xl font-bold text-ink-950">Need something fixed?</h3>
+                        <p className="mt-2 text-ink-600 text-sm max-w-sm">
+                            Create an account, browse trusted technicians, and book your first job in minutes.
+                        </p>
+                        <Button asChild variant="accent" className="mt-6">
+                            <Link href="/register">Book a service →</Link>
+                        </Button>
+                    </div>
+                    <div className="docket p-8 bg-ink-900 border-ink-800">
+                        <h3 className="font-display text-2xl font-bold text-white">Are you a technician?</h3>
+                        <p className="mt-2 text-ink-300 text-sm max-w-sm">
+                            List your services, set your availability, and get booked directly by customers near you.
+                        </p>
+                        <Button asChild variant="accent" className="mt-6">
+                            <Link href="/register">Join as a Technician →</Link>
+                        </Button>
+                    </div>
+                </div>
 
             </section>
         </>
