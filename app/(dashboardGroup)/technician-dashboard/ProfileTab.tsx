@@ -24,12 +24,23 @@ export default function ProfileTab({ profile }: { profile: TechnicianProfile }) 
     } = useForm<TechnicianProfileFormValues>({
         resolver: zodResolver(technicianProfileSchema),
 
+        // defaultValues: {
+        //     bio: profile.bio || '',
+        //     skills: profile.skills.join(', '),
+        //     experience: profile.experience,
+        //     serviceRate: profile.serviceRate,
+        //     location: profile.location || '',
+        // },
+
+
+        // In ProfileTab.tsx
+
         defaultValues: {
-            bio: profile.bio || '',
-            skills: profile.skills.join(', '),
-            experience: profile.experience,
-            serviceRate: profile.serviceRate,
-            location: profile.location || '',
+            bio: profile?.bio || '',
+            skills: profile?.skills?.join(', ') || '',
+            experience: profile?.experience ?? 0,
+            serviceRate: profile?.serviceRate ?? 0,
+            location: profile?.location || '',
         },
     });
 

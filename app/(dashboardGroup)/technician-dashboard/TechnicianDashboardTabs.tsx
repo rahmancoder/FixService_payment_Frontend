@@ -48,9 +48,23 @@ export default function TechnicianDashboardTabs({
                 ))}
             </div>
 
+
+
+
+
             <div className="mt-6">
                 {active === 'Bookings' && <BookingsTab bookings={bookings} />}
                 {active === 'Profile' && <ProfileTab profile={profile} />}
+
+                {/* {active === 'Profile' && (
+                    profile ? (
+                        <ProfileTab profile={profile} />
+                    ) : (
+                        <p className="text-sm text-ink-400">Loading profile data...</p>
+                    )
+                )} */}
+
+
                 {active === 'Services' && <ServicesTab services={services} categories={categories} />}
                 {active === 'Availability' && <AvailabilityTab availability={availability} />}
             </div>

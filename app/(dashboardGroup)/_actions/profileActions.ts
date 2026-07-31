@@ -16,7 +16,7 @@ export async function updateProfile(data: TechnicianProfileFormValues): Promise<
                     .map(s => s.trim())
                     .filter(Boolean),
                 experience: data.experience,
-                pricingRate: data.pricingRate,
+                serviceRate: data.serviceRate,
                 location: data.location || undefined,
             }),
         });

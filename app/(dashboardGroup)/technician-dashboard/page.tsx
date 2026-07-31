@@ -15,8 +15,12 @@ async function getDashboardData() {
     ]);
 
     const technicianId = me?.technicianProfile?.id;
+    // const detailRes = technicianId
+    //     ? await fetch(`${API_URL}/technicians/${technicianId}`, { cache: 'no-store' }).then(r => r.json())
+    //     : { data: null };
+
     const detailRes = technicianId
-        ? await fetch(`${API_URL}/technicians/${technicianId}`, { cache: 'no-store' }).then(r => r.json())
+        ? await fetch(`${API_URL}/technician/single/${technicianId}`, { cache: 'no-store' }).then(r => r.json())
         : { data: null };
 
     return {
