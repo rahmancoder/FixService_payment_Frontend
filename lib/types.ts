@@ -57,7 +57,9 @@ export interface TechnicianProfile {
     bio?: string | null;
     skills: string[];
     experience: number;
-    pricingRate: number;
+
+    serviceRate: number;
+
     location?: string | null;
     avgRating: number;
     totalReviews: number;
@@ -91,8 +93,9 @@ export interface Service {
     title: string;
     description?: string | null;
     price: number;
-    categoryId: string;
+    categoryId: number;
     category?: Category;
+
     technicianId: string;
     technician?: TechnicianProfile;
     location?: string | null;
@@ -101,9 +104,12 @@ export interface Service {
 
 export interface Booking {
     id: string;
+
     customerId: string;
     technicianId: string;
-    serviceId: string;
+
+    serviceId: number;
+
     scheduledAt: string;
     address?: string | null;
     notes?: string | null;

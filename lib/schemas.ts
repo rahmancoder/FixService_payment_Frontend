@@ -40,21 +40,6 @@ export const reviewSchema = z.object({
 export type ReviewFormValues = z.infer<typeof reviewSchema>;
 
 
-export const technicianProfileSchema = z.object({
-
-    bio: z.string().max(500, { error: 'Keep your bio under 500 characters', }).optional(),
-
-    skills: z.string().optional(),
-
-    experience: z.coerce.number().min(0, { error: 'Experience cannot be negative', }),
-
-    pricingRate: z.coerce.number().min(0, { error: 'Rate cannot be negative', }),
-
-    location: z.string().optional(),
-});
-
-export type TechnicianProfileFormValues = z.infer<typeof technicianProfileSchema>;
-
 
 export const serviceSchema = z.object({
 
@@ -62,7 +47,11 @@ export const serviceSchema = z.object({
 
     description: z.string().optional(),
 
-    price: z.coerce.number().positive({ error: 'Price must be greater than 0', }),
+    // price: z.coerce.number().positive({ error: 'Price must be greater than 0', }),
+
+    // categoryId: z.number(),
+
+    price: z.number().positive({ error: 'Price must be greater than 0', }),
 
     categoryId: z.number(),
 
@@ -70,6 +59,47 @@ export const serviceSchema = z.object({
 });
 
 export type ServiceFormValues = z.infer<typeof serviceSchema>;
+
+
+
+export const technicianProfileSchema = z.object({
+
+    bio: z.string().max(500, { error: 'Keep your bio under 500 characters', }).optional(),
+
+    skills: z.string().optional(),
+
+    // experience: z.coerce.number().min(0, { error: 'Experience cannot be negative', }),
+
+    // serviceRate: z.coerce.number().min(0, { error: 'Rate cannot be negative', }),
+
+    experience: z.number().min(0, { error: 'Experience cannot be negative', }),
+
+    serviceRate: z.number().min(0, { error: 'Rate cannot be negative', }),
+
+    location: z.string().optional(),
+});
+
+export type TechnicianProfileFormValues = z.infer<typeof technicianProfileSchema>;
+
+
+
+// export const technicianProfileSchema = z.object({
+//     bio: z.string().max(500, 'Keep your bio under 500 characters').optional(),
+//     skills: z.string().optional(),
+//     experience: z.coerce.number().min(0, 'Experience cannot be negative'),
+//     serviceRate: z.coerce.number().min(0, 'Rate cannot be negative'),
+//     location: z.string().optional(),
+// });
+// export type TechnicianProfileFormValues = z.infer<typeof technicianProfileSchema>;
+
+
+
+
+
+
+
+
+
 
 export const categorySchema = z.object({
 
