@@ -48,9 +48,17 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* ---- Color  ---- */
-  --color-paper: #FAFAF7;
+  /* --color-paper: #FAFAF7;
   --color-paper-100: #F4F5F1;
-  --color-paper-200: #E9EAE3;
+  --color-paper-200: #E9EAE3; */
+
+  --color-paper: #F4F4F0;
+  /* Main site background */
+  --color-paper-100: #EAEBE5;
+  /* Secondary/slightly darker sections */
+  --color-paper-200: #DFE0D8;
+  /* Borders/accents */
+
 
   --color-ink-50: #EEF1F6;
   --color-ink-100: #D6DCE8;
@@ -88,13 +96,22 @@
   /* ---- Shadow tokens ---- */
   --shadow-docket: 0 1px 0 rgba(15, 24, 48, 0.06), 0 8px 24px -12px rgba(15, 24, 48, 0.18);
 
+  --background-image-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+
 }
 
 :root {
-  --background: oklch(1 0 0);
+  /* --background: oklch(1 0 0);
   --foreground: oklch(0.148 0.004 228.8);
   --card: oklch(1 0 0);
+  --card-foreground: oklch(0.148 0.004 228.8); */
+
+  --background: oklch(86.058% 0.23346 132.622);
+  --foreground: oklch(0.148 0.004 228.8);
+  --card: oklch(1 0 0);
+  /* Cards can stay white so they pop against the soft background */
   --card-foreground: oklch(0.148 0.004 228.8);
+
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.148 0.004 228.8);
   --primary: oklch(0.52 0.105 223.128);
@@ -169,7 +186,7 @@
   } */
 
 
-@layer base {
+/* @layer base {
   * {
     border-color: var(--border);
     outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
@@ -180,10 +197,71 @@
     color: var(--foreground);
     font-family: var(--font-sans, system-ui, sans-serif);
   }
+} */
+
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink-900 font-body antialiased;
+    background-image: var(--background-image-grain);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink-950;
+  }
+
+  ::selection {
+    @apply bg-rust-50 text-rust-700;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #E2691E;
+    outline-offset: 2px;
+  }
 }
 
+@layer components {
+
+  /* Job-docket card: the signature motif. A punched stub + serrated edge like a
+     paper work order, used for services/bookings/technician cards. */
+  .docket {
+    @apply relative bg-white border border-ink-100 rounded-lg shadow-docket;
+  }
+
+  .docket::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: var(--color-paper);
+    border: 1px solid var(--color-ink-100);
+    border-top: none;
+  }
+
+  .stamp {
+    @apply inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider px-2 py-1 rounded-sm border;
+  }
+
+  .field-label {
+    @apply block text-xs font-mono uppercase tracking-wide text-ink-500 mb-1.5;
+  }
 
 
-html {
-  @apply font-sans;
+  html {
+    @apply font-sans;
+
+  }
+
+
 }
