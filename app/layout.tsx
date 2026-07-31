@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/shared/navbar';
 import { Toaster } from '@/components/ui/sonner';
 import { getSession } from '@/service/getMe';
+import Footer from '@/components/shared/footer';
 
 // import { getSession } from '@/service/getMe';
 
@@ -39,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="flex min-h-screen flex-col">
         <Navbar session={session} />
         <main className="flex-1">{children}</main>
-
+        <Footer />
         <Toaster position="top-center" />
       </body>
     </html>
