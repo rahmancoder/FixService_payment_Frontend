@@ -36,9 +36,24 @@ export interface TechnicianUser {
     email?: string;
 }
 
+// export interface TechnicianProfile {
+//     id: string;
+//     userId: string;
+//     bio?: string | null;
+//     skills: string[];
+//     experience: number;
+//     pricingRate: number;
+//     location?: string | null;
+//     avgRating: number;
+//     totalReviews: number;
+//     user: TechnicianUser;
+// }
+
+
 export interface TechnicianProfile {
     id: string;
     userId: string;
+
     bio?: string | null;
     skills: string[];
     experience: number;
@@ -47,6 +62,10 @@ export interface TechnicianProfile {
     avgRating: number;
     totalReviews: number;
     user: TechnicianUser;
+
+    services?: Service[];
+    availability?: Availability[];
+    reviews?: Review[];
 }
 
 
@@ -61,14 +80,14 @@ export interface Availability {
 
 
 export interface Category {
-    id: string;
+    id: number;
     name: string;
     description?: string | null;
 }
 
 
 export interface Service {
-    id: string;
+    id: number;
     title: string;
     description?: string | null;
     price: number;

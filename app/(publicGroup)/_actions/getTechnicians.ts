@@ -22,3 +22,34 @@ export async function getTechnicians(
 
     return res.json();
 }
+
+
+
+export async function getTechnicianById(id: string): Promise<TechnicianProfile | null> {
+
+    const res = await fetch(`${API_URL}/technician/single/${id}`,
+        {
+            cache: 'no-store'
+        });
+
+    if (res.status === 404) return null;
+
+    const json: ApiResponse<TechnicianProfile> = await res.json();
+
+    return json.data;
+
+
+
+    // const url = `${API_URL}/technician/single/${id}`;
+    // console.log("Fetching technician from URL:", url); // Debug log
+
+    // const res = await fetch(url, {
+    //     cache: 'no-store',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     }
+    // });
+
+}
+
+
