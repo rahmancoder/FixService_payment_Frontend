@@ -1,9 +1,8 @@
 import Link from 'next/link';
-
 import { API_URL } from '@/lib/backendFetch';
 import Image from 'next/image';
 import { ApiResponse, Category, Service, TechnicianProfile } from '@/lib/types';
-
+import ServiceCard from './_components/services/ServiceCard';
 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -36,10 +35,17 @@ async function getHomeData() {
     };
 }
 
-
+const categoryIcons: Record<string, string> = {
+    Plumbing: '🔧',
+    Electrical: '⚡',
+    Cleaning: '🧹',
+    Painting: '🎨',
+    Carpentry: '🪚',
+    'AC Repair': '❄️',
+};
 
 export default async function HomePage() {
-    const { technicianCount, categoryCount } = await getHomeData();
+    const { categories, services, technicianCount, categoryCount } = await getHomeData();
 
     return (
         <>
@@ -114,25 +120,84 @@ export default async function HomePage() {
                     Four stages, always visible, from the moment you request work to the moment it is signed off.
                 </p>
 
-
+                <div className="mt-10 grid gap-6 md:grid-cols-4">
+                    {[
+                        { step: '01', title: 'Request', desc: 'Pick a service, choose a time, describe the job.' },
+                        { step: '02', title: 'Accepted', desc: 'A technician accepts and locks in the schedule.' },
+                        { step: '03', title: 'Paid', desc: 'Pay securely through Stripe once work is confirmed.' },
+                        { step: '04', title: 'Completed', desc: 'Job finishes, you leave a review for the trade.' },
+                    ].map(item => (
+                        <div key={item.step} className="docket p-5">
+                            <span className="font-mono text-xs text-rust-600">{item.step}</span>
+                            <h3 className="mt-2 font-display font-semibold text-lg text-ink-950">{item.title}</h3>
+                            <p className="mt-1.5 text-sm text-ink-500">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             {/* ---------- Categories ---------- */}
 
             <section className="border-y border-ink-100 bg-ink-950">
+                <div className="mx-auto max-w-6xl px-5 py-20">
+                    <div className="flex items-end justify-between flex-wrap gap-4">
 
+                        <div>
+                            <h2 className="font-display text-3xl font-bold text-white">Popular trades</h2>
+                            <p className="mt-2 text-ink-300">Jump straight to the category you need.</p>
+                        </div>
+
+                        <Link href="/services" className="text-sm font-medium text-rust hover:text-rust-400 transition-colors">
+                            View all services →
+                        </Link>
+                    </div>
+
+                    <div className="mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+                        {categories.map(category => (
+                            <Link
+                                key={category.id}
+                                href={`/services?categoryId=${category.id}`}
+                                className="group flex items-center gap-4 rounded-lg border border-ink-800 bg-ink-900 p-5 hover:border-rust/50 transition-colors"
+                            >
+                                <span className="text-2xl">{categoryIcons[category.name] || '🛠️'}</span>
+                                <div>
+                                    <h3 className="font-display font-semibold text-white group-hover:text-rust transition-colors">
+                                        {category.name}
+                                    </h3>
+                                    {category.description && (
+                                        <p className="text-xs text-ink-300 mt-0.5">{category.description}</p>
+                                    )}
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
             </section>
 
             {/* ---------- Recent services ---------- */}
+            {services.length > 0 && (
+                <section className="mx-auto max-w-6xl px-5 py-20">
+                    <div className="flex items-end justify-between flex-wrap gap-4">
+                        <div>
+                            <h2 className="font-display text-3xl font-bold text-ink-950">Fresh on the docket</h2>
+                            <p className="mt-2 text-ink-500">Recently listed services from our technicians.</p>
+                        </div>
+                        <Link href="/services" className="text-sm font-medium text-rust-600 hover:text-rust-700 transition-colors">
+                            Browse all →
+                        </Link>
+                    </div>
 
-            <section className="mx-auto max-w-6xl px-5 py-20">
-
-
-            </section>
-
+                    <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        {services.map(service => (
+                            <ServiceCard key={service.id} service={service} />
+                        ))}
+                    </div>
+                </section>
+            )}
 
             {/* ---------- CTA ---------- */}
             <section className="mx-auto max-w-6xl px-5 pb-24">
+
                 <div className="grid md:grid-cols-2 gap-5">
                     <div className="docket p-8 bg-rust-50 border-rust/20">
                         <h3 className="font-display text-2xl font-bold text-ink-950">Need something fixed?</h3>
