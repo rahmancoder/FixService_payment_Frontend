@@ -4,9 +4,7 @@ import { getTechnicianById } from '../../_actions/getTechnicians';
 import BookingForm from './BookingForm';
 import { Badge } from '@/components/ui/badge';
 
-// proxy.ts already guarantees only an authenticated CUSTOMER reaches
-// /book/* (see the pathname.startsWith('/book') branch) — no session/role
-// check needed here.
+
 export default async function BookServicePage({
     params,
 }: {
@@ -17,8 +15,7 @@ export default async function BookServicePage({
     const service = await getServiceById(serviceId);
     if (!service) notFound();
 
-    // Fetch the technician's weekly availability windows so the time-slot
-    // picker can show real working hours instead of a bare datetime input.
+
     const technician = service.technicianId ? await getTechnicianById(service.technicianId) : null;
 
     return (

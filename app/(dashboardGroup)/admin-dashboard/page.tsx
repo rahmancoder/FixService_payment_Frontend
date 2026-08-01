@@ -19,8 +19,7 @@ async function getAdminData() {
     return { users: users.data, bookings: bookings.data, categories: categories.data };
 }
 
-// proxy.ts already guarantees only an authenticated ADMIN reaches this
-// page — no session/role check needed here.
+
 export default async function AdminDashboardPage() {
     const { users, bookings, categories } = await getAdminData();
 
@@ -28,9 +27,6 @@ export default async function AdminDashboardPage() {
         ['REQUESTED', 'ACCEPTED', 'PAID', 'IN_PROGRESS'].includes(b.status)
     ).length;
 
-    // Computed from the booking list already fetched above — the backend
-    // doesn't expose a dedicated admin revenue/payments endpoint yet, so this
-    // sums completed payments attached to the bookings we already have.
     const revenue = bookings.reduce((sum, b) => {
         return b.payment?.status === 'COMPLETED' ? sum + b.payment.amount : sum;
     }, 0);
@@ -39,11 +35,14 @@ export default async function AdminDashboardPage() {
         <div className="mx-auto max-w-5xl px-5 py-12">
             <Badge variant="warning">Admin dashboard</Badge>
             <h1 className="mt-4 font-display text-3xl font-bold text-ink-950">Platform oversight</h1>
-            <p className="mt-2 text-ink-500">Global snapshot of everything moving through FixItNow.</p>
+            <p className="mt-2 text-ink-500">Global snapshot of everything moving through FixService Payment.</p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
                 <StatsCard label="Total users" value={String(users.length)} />
+
                 <StatsCard label="Active bookings" value={String(activeBookings)} />
+
                 <StatsCard label="Categories" value={String(categories.length)} />
 
                 <StatsCard label="Revenue collected" value={`$${revenue.toFixed(2)}`} accent />

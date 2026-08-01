@@ -4,9 +4,7 @@ import { NextResponse } from 'next/server';
 import { getNewAccessToken } from './service/refreshToken';
 import { jwtUtils } from './utils/jwt';
 
-// NOTE: this file is the actual Next.js "Proxy" (the renamed Middleware
-// convention) — it runs on every matched request, before any page renders.
-// It is NOT the backend-fetch helper; that lives in `lib/backendFetch.ts`.
+
 
 const ACCESS_TOKEN_COOKIE = 'access_token';
 const REFRESH_TOKEN_COOKIE = 'refresh_token';
@@ -20,9 +18,7 @@ const dashboardByRole: Record<string, string> = {
     ADMIN: '/admin-dashboard',
 };
 
-// proxy.ts always runs on the Node.js runtime in Next.js 16 (it can't be
-// configured to run on Edge) — that's what makes using `jsonwebtoken` here
-// safe, unlike the old middleware.ts convention.
+
 export async function proxy(request: NextRequest) {
     const pathname = request.nextUrl.pathname;
 

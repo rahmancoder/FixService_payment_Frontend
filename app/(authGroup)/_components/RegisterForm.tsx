@@ -18,7 +18,8 @@ import { cn } from '@/lib/utils';
 export default function RegisterForm() {
     const [isPending, startTransition] = useTransition();
     const [serverError, setServerError] = useState('');
-    const [isSuccess, setIsSuccess] = useState(false); // 1. Added success state
+
+    const [isSuccess, setIsSuccess] = useState(false);
 
     const {
         register,
@@ -43,14 +44,13 @@ export default function RegisterForm() {
                 setServerError(result.error);
                 toast.error(result.error);
             } else {
-                // 2. Set success state and show toast notification
+                // show toast notification
                 setIsSuccess(true);
                 toast.success('Registration successful! Please sign in with your email and password.');
             }
         });
     }
 
-    // 3. Render Success Card if registered successfully
     if (isSuccess) {
         return (
             <div className="mx-auto max-w-md px-5 py-20 text-center">

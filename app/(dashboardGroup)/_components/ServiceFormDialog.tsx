@@ -39,9 +39,6 @@ export default function ServiceFormDialog({ categories }: { categories: Category
 
     function onSubmit(values: ServiceFormValues) {
 
-        // console.log(values);
-        // console.log(typeof values.categoryId);
-        // console.log(typeof values.price);
 
         startTransition(async () => {
             const res = await createService(values);
@@ -79,17 +76,13 @@ export default function ServiceFormDialog({ categories }: { categories: Category
                     <div className="grid grid-cols-2 gap-4">
                         <div>
                             <Label htmlFor="price">Price ($)</Label>
-                            {/* <Input id="price" type="number" min={0} step="0.01" {...register('price')} /> */}
+
                             <Input id="price" type="number" min={0} step="0.01" {...register('price', { valueAsNumber: true })} />
                             {errors.price && <p className="text-xs text-brick mt-1">{errors.price.message}</p>}
                         </div>
                         <div>
                             <Label htmlFor="categoryId">Category</Label>
-                            {/* <select
-                                id="categoryId"
-                                {...register('categoryId')}
-                                className="flex h-10 w-full rounded-md border border-input bg-white px-3.5 py-2.5 text-sm text-foreground focus-visible:outline-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring"
-                            > */}
+
 
 
                             <select
@@ -105,10 +98,7 @@ export default function ServiceFormDialog({ categories }: { categories: Category
                             {errors.categoryId && <p className="text-xs text-brick mt-1">{errors.categoryId.message}</p>}
                         </div>
                     </div>
-                    {/* <div>
-                        <Label htmlFor="location">Location</Label>
-                        <Input id="location" {...register('location')} />
-                    </div> */}
+
                     <Button type="submit" variant="accent" className="w-full" disabled={isPending}>
                         {isPending ? 'Creating…' : 'Create service'}
                     </Button>

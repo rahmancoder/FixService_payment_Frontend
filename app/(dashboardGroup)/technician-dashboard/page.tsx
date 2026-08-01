@@ -52,7 +52,7 @@ export default async function TechnicianDashboardPage() {
             <h1 className="mt-4 font-display text-3xl font-bold text-ink-950">Manage your workshop</h1>
             <p className="mt-2 text-ink-500">
                 {profile?.avgRating > 0 ? `${profile.avgRating.toFixed(1)}★ average` : 'No ratings yet'} ·{' '}
-                {profile?.totalReviews ?? 0} review{profile?.totalReviews !== 1 ? 's' : ''}
+                {/* {profile?.totalReviews ?? 0} review{profile?.totalReviews !== 1 ? 's' : ''} */}
             </p>
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

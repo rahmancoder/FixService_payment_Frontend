@@ -35,7 +35,7 @@ export default async function TechnicianDetailPage({ params }: { params: Promise
                     </div>
                     <div className="text-right">
 
-                        <p className="font-mono text-xl font-bold text-rust-600">{formatCurrency(technician.pricingRate)}/hr</p>
+                        <p className="font-mono text-xl font-bold text-rust-600">{formatCurrency(technician.serviceRate)}/hr</p>
                         <p className="text-xs text-ink-400 font-mono uppercase">{technician.experience} yrs experience</p>
                     </div>
                 </div>

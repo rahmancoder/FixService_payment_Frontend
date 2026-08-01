@@ -60,9 +60,7 @@ export default function ServiceSearchBar({
 
             <Button type="submit" className="w-full">Apply filters</Button>
             {(searchParams?.searchTerm || searchParams?.categoryId || searchParams?.location || searchParams?.minPrice) && (
-                // <a href="/services" className="block text-center text-xs text-ink-500 hover:text-rust-600 font-mono uppercase tracking-wide">
-                //     Clear all
-                // </a>
+
 
                 <Link
                     href="/services"

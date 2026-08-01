@@ -60,7 +60,6 @@ export async function loginAction(data: LoginFormValues, next?: string): Promise
         return { error: json?.message || 'Invalid email or password' };
     }
 
-    //  FIX: Destructure `showUser` matching  backend response!
     const { accessToken, refreshToken, showUser } = json.data || {};
 
     if (!showUser || !showUser.role) {
@@ -101,19 +100,5 @@ export async function registerAction(data: RegisterFormValues): Promise<ActionSt
         return { error: json?.message || 'Registration failed' };
     }
 
-    // 1. Destructure 'user' from backend (or alias it: user: showUser)
-    // const { accessToken, refreshToken, user } = json.data || {};
-
-    // await setAuthCookies(accessToken, refreshToken);
-
-    // 2. Use optional chaining (user?.role) so it doesn't crash if role is missing
-    // const userRole = user?.role;
-    // const targetPath = userRole ? dashboardByRole[userRole] : '/login';
-
-    // redirect(targetPath);
-
-
-    // after successful login
-    // Return success instead of redirecting
     return { success: true || 'Registration successful!' };
 }

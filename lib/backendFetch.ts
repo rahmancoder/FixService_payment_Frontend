@@ -1,7 +1,9 @@
 import 'server-only';
 import { cookies } from 'next/headers';
 
-export const API_URL = process.env.API_URL || 'http://localhost:5000/api';
+
+export const API_URL = process.env.API_URL || 'https://fix-service-payment.vercel.app/api';
+
 export const ACCESS_TOKEN_COOKIE = 'access_token';
 export const REFRESH_TOKEN_COOKIE = 'refresh_token';
 

@@ -34,7 +34,6 @@ export default function LoginForm() {
                 setServerError(result.error);
                 toast.error(result.error);
             }
-            // On success, loginAction redirects server-side — nothing else to do here.
         });
     }
 

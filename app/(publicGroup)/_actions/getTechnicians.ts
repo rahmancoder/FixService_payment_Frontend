@@ -5,7 +5,7 @@ import { ApiResponse, TechnicianProfile } from '@/lib/types';
 export async function getTechnicians(
     searchParams: Promise<Record<string, string | undefined>> | Record<string, string | undefined>
 ): Promise<ApiResponse<TechnicianProfile[]>> {
-    // FIX: Await searchParams 
+
     const resolvedParams = await searchParams;
 
     const params = new URLSearchParams();
@@ -39,16 +39,6 @@ export async function getTechnicianById(id: string): Promise<TechnicianProfile |
     return json.data;
 
 
-
-    // const url = `${API_URL}/technician/single/${id}`;
-    // console.log("Fetching technician from URL:", url); // Debug log
-
-    // const res = await fetch(url, {
-    //     cache: 'no-store',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     }
-    // });
 
 }
 
