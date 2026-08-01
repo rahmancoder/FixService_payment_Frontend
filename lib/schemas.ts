@@ -54,8 +54,11 @@ export const serviceSchema = z.object({
     price: z.number().positive({ error: 'Price must be greater than 0', }),
 
     categoryId: z.number(),
+    // categoryId: z.coerce
+    //     .number({ message: 'Please select a valid category' }),
+    // categoryId: z.string(),
 
-    location: z.string().optional(),
+    // location: z.string().optional(),
 });
 
 export type ServiceFormValues = z.infer<typeof serviceSchema>;

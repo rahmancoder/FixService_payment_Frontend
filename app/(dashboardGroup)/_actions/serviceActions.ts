@@ -14,7 +14,7 @@ export async function createService(data: ServiceFormValues): Promise<ActionStat
                 description: data.description || undefined,
                 price: data.price,
                 categoryId: data.categoryId,
-                location: data.location || undefined,
+                // location: data.location || undefined,
             }),
         });
     } catch (err) {
