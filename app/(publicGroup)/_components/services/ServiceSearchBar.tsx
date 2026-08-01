@@ -23,7 +23,7 @@ export default function ServiceSearchBar({
                     name="searchTerm"
                     // defaultValue={searchParams.searchTerm}
                     defaultValue={searchParams?.searchTerm ?? ''}
-                    placeholder="e.g. faucet, wiring"
+                    placeholder=" plumbing, cleaning"
                 />
             </div>
 
@@ -42,10 +42,10 @@ export default function ServiceSearchBar({
                 </select>
             </div>
 
-            <div>
+            {/* <div>
                 <Label htmlFor="location">Location</Label>
-                <Input id="location" name="location" defaultValue={searchParams?.location} placeholder="e.g. Dhaka" />
-            </div>
+                <Input id="location" name="location" defaultValue={searchParams?.location} placeholder="Dhaka " />
+            </div> */}
 
             <div className="grid grid-cols-2 gap-3">
                 <div>
