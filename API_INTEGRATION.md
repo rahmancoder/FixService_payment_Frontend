@@ -11,6 +11,68 @@ All server-side calls go through `fetch`:
 - `proxy.ts` (root) — the Next.js Proxy/middleware; verifies/refreshes tokens on every request.
 
 
+# Role Based Mapping OverView
+
+## Customer 
+
+| Frontend Component | Backend API                      |
+| ------------------ | -------------------------------- |
+| Dashboard Overview | `GET /api/bookings`              |
+| Booking List       | `GET /api/bookings`              |
+| Booking Details    | `GET /api/bookings/:id`          |
+| Cancel Booking     | `PATCH /api/bookings/:id/cancel` |
+| Payment History    | `GET /api/payments`              |
+| Pay for Booking    | `POST /api/payments/create`      |
+| Payment Success    | `POST /api/payments/confirm`     |
+| Submit Review      | `POST /api/reviews`              |
+| Customer Profile   | `GET /api/auth/me`               |
+
+
+## Technician
+
+| Frontend Component      | Backend API                          |
+| ----------------------- | ------------------------------------ |
+| Dashboard Overview      | `GET /api/auth/me`                   |
+| Technician Profile      | `PUT /api/technician/profile`        |
+| Availability Management | `PUT /api/technician/availability`   |
+| Booking Management      | `GET /api/technician/bookings`       |
+| Update Booking Status   | `PATCH /api/technician/bookings/:id` |
+| Create Service          | `POST /api/services`                 |
+| Delete Service          | `DELETE /api/services/:id`           |
+| Categories Dropdown     | `GET /api/categories`                |
+
+
+
+## Admin
+
+| Frontend Component | Backend API                                       |
+| ------------------ | ------------------------------------------------- |
+| Dashboard Overview | `GET /api/admin/users`, `GET /api/admin/bookings` |
+| User Management    | `GET /api/admin/users`                            |
+| Ban / Unban User   | `PATCH /api/admin/users/:id`                      |
+| Booking Management | `GET /api/admin/bookings`                         |
+| Category List      | `GET /api/categories`                             |
+| Create Category    | `POST /api/admin/categories`                      |
+
+
+
+## Public 
+
+
+| Frontend Component           | Backend API                      |
+| ---------------------------- | -------------------------------- |
+| Homepage                     | `GET /api/services?limit=6`      |
+| Homepage Categories          | `GET /api/categories`            |
+| Homepage Featured Technician | `GET /api/technician?limit=1`    |
+| Service Listing              | `GET /api/services`              |
+| Service Details              | `GET /api/services/:id`          |
+| Technician Listing           | `GET /api/technician`            |
+| Technician Details           | `GET /api/technician/single/:id` |
+
+
+
+
+# Now Let's see Project Structure Base API Mapping
 
 
 ## Public browsing Mapping
@@ -80,61 +142,3 @@ All server-side calls go through `fetch`:
 Stats cards on both the admin and technician dashboards (`_components/StatsCard.tsx`).
 
 
-
-# Role Based Mapping OverView
-
-## Customer 
-
-| Frontend Component | Backend API                      |
-| ------------------ | -------------------------------- |
-| Dashboard Overview | `GET /api/bookings`              |
-| Booking List       | `GET /api/bookings`              |
-| Booking Details    | `GET /api/bookings/:id`          |
-| Cancel Booking     | `PATCH /api/bookings/:id/cancel` |
-| Payment History    | `GET /api/payments`              |
-| Pay for Booking    | `POST /api/payments/create`      |
-| Payment Success    | `POST /api/payments/confirm`     |
-| Submit Review      | `POST /api/reviews`              |
-| Customer Profile   | `GET /api/auth/me`               |
-
-
-## Technician
-
-| Frontend Component      | Backend API                          |
-| ----------------------- | ------------------------------------ |
-| Dashboard Overview      | `GET /api/auth/me`                   |
-| Technician Profile      | `PUT /api/technician/profile`        |
-| Availability Management | `PUT /api/technician/availability`   |
-| Booking Management      | `GET /api/technician/bookings`       |
-| Update Booking Status   | `PATCH /api/technician/bookings/:id` |
-| Create Service          | `POST /api/services`                 |
-| Delete Service          | `DELETE /api/services/:id`           |
-| Categories Dropdown     | `GET /api/categories`                |
-
-
-
-## Admin
-
-| Frontend Component | Backend API                                       |
-| ------------------ | ------------------------------------------------- |
-| Dashboard Overview | `GET /api/admin/users`, `GET /api/admin/bookings` |
-| User Management    | `GET /api/admin/users`                            |
-| Ban / Unban User   | `PATCH /api/admin/users/:id`                      |
-| Booking Management | `GET /api/admin/bookings`                         |
-| Category List      | `GET /api/categories`                             |
-| Create Category    | `POST /api/admin/categories`                      |
-
-
-
-## Public 
-
-
-| Frontend Component           | Backend API                      |
-| ---------------------------- | -------------------------------- |
-| Homepage                     | `GET /api/services?limit=6`      |
-| Homepage Categories          | `GET /api/categories`            |
-| Homepage Featured Technician | `GET /api/technician?limit=1`    |
-| Service Listing              | `GET /api/services`              |
-| Service Details              | `GET /api/services/:id`          |
-| Technician Listing           | `GET /api/technician`            |
-| Technician Details           | `GET /api/technician/single/:id` |

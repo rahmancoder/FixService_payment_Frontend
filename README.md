@@ -81,7 +81,7 @@ components
 
 ### Install dependencies
 
-# 📚 Main Dependencies
+# Main Dependencies
 
 | Package | Purpose |
 |----------|---------|
@@ -106,7 +106,7 @@ components
 
 ---
 
-# 📦 Installed Packages
+# Installed Packages
 
 ### Core Framework
 
@@ -164,7 +164,7 @@ npm install sonner
 
 ---
 
-# 🛠 Development Dependencies
+# Development Dependencies
 
 ```bash
 npm install -D typescript
@@ -280,7 +280,7 @@ This project reflects modern full-stack development practices and serves as a st
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Md. Mustafizur Rahman** @rahmancoder 
 
