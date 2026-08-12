@@ -50,16 +50,16 @@ export default function LoginForm() {
 
             {/* Demo Login <Buttons></Buttons> */}
 
-            {/* <div className="mt-6">
-        <DemoLoginButtons next={next} />
-      </div> */}
+            <div className="mt-6">
+                <DemoLoginButtons next={next} />
+            </div>
 
 
-            {/* <div className="my-6 flex items-center gap-3">
-        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
-        <span className="text-xs font-mono uppercase text-ink-400">or sign in manually</span>
-        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
-      </div> */}
+            <div className="my-6 flex items-center gap-3">
+                <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+                <span className="text-xs font-mono uppercase text-ink-400">or sign in manually</span>
+                <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+            </div>
 
 
             <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5" noValidate>
@@ -94,12 +94,14 @@ export default function LoginForm() {
             </form>
 
 
-            {/* <div className="my-6 flex items-center gap-3">
-        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
-        <span className="text-xs font-mono uppercase text-ink-400">or continue with</span>
-        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
-      </div>
-      <SocialLoginButtons /> */}
+            <div className="my-6 flex items-center gap-3">
+                <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+                <span className="text-xs font-mono uppercase text-ink-400">or continue with</span>
+                <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+            </div>
+            <SocialLoginButtons />
+
+            {/* <SocialLoginButtons /> */}
 
 
 

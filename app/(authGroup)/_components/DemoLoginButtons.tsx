@@ -6,8 +6,8 @@ import { loginAction } from '../_actions/authActions';
 import { Button } from '@/components/ui/button';
 
 const DEMO_ACCOUNTS = [
-    { label: 'Customer', email: 'frontend@technician11.com', password: 'password12345' },
-    { label: 'Technician', email: 'video@customer.com', password: 'password12345' },
+    { label: 'Customer', email: 'video@customer.com', password: 'password12345' },
+    { label: 'Technician', email: 'frontend@technician11.com', password: 'password12345' },
     { label: 'Admin', email: 'mustafiz@admin.com', password: 'mustafiz12345' },
 ] as const;
 

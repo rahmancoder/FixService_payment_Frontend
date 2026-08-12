@@ -14,6 +14,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
+import SocialLoginButtons from './SocialLoginButtons';
 
 export default function RegisterForm() {
     const [isPending, startTransition] = useTransition();
@@ -131,6 +132,16 @@ export default function RegisterForm() {
                 </Button>
 
             </form>
+
+            <div className="my-6 flex items-center gap-3">
+                <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+                <span className="text-xs font-mono uppercase text-ink-400">or continue with</span>
+                <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+            </div>
+            <SocialLoginButtons />
+
+
+
 
             <p className="mt-6 text-sm text-ink-500 text-center">
                 Already registered?{' '}
