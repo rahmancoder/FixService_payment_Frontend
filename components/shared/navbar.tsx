@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { logout } from '@/service/logout';
 import type { SessionPayload } from '@/utils/jwt';
+import ThemeToggle from './theme-toggle';
 
 const dashboardHref: Record<string, string> = {
     CUSTOMER: '/dashboard',
@@ -49,6 +50,9 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                 </div>
 
                 <div className="hidden md:flex items-center gap-3">
+
+                    {/* <ThemeToggle /> */}
+
                     {session ? (
                         <>
                             <Button asChild variant="outline">
@@ -71,6 +75,8 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                         </>
                     )}
                 </div>
+
+                {/* <ThemeToggle /> */}
 
                 <button
                     className="md:hidden flex h-9 w-9 items-center justify-center rounded border border-ink-100"

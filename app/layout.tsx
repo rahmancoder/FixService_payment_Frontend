@@ -5,6 +5,7 @@ import Navbar from '@/components/shared/navbar';
 import { Toaster } from '@/components/ui/sonner';
 import { getSession } from '@/service/getMe';
 import Footer from '@/components/shared/footer';
+import { ThemeProvider } from '@/components/shared/theme-provider';
 
 // import { getSession } from '@/service/getMe';
 
@@ -38,10 +39,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body className="flex min-h-screen flex-col">
+
+        {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange> */}
+
         <Navbar session={session} />
         <main className="flex-1">{children}</main>
         <Footer />
         <Toaster position="top-center" />
+
+        {/* </ThemeProvider> */}
+
       </body>
     </html>
   );
