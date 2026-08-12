@@ -13,6 +13,8 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { loginAction } from '../_actions/authActions';
+import DemoLoginButtons from './DemoLoginButtons';
+import SocialLoginButtons from './SocialLoginButtons';
 
 export default function LoginForm() {
     const searchParams = useSearchParams();
@@ -46,6 +48,20 @@ export default function LoginForm() {
 
             <p className="mt-2 text-ink-500 text-sm">Sign in to track your bookings and jobs.</p>
 
+            {/* Demo Login <Buttons></Buttons> */}
+
+            {/* <div className="mt-6">
+        <DemoLoginButtons next={next} />
+      </div> */}
+
+
+            {/* <div className="my-6 flex items-center gap-3">
+        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+        <span className="text-xs font-mono uppercase text-ink-400">or sign in manually</span>
+        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+      </div> */}
+
+
             <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5" noValidate>
 
                 {serverError && (
@@ -76,6 +92,17 @@ export default function LoginForm() {
 
 
             </form>
+
+
+            {/* <div className="my-6 flex items-center gap-3">
+        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+        <span className="text-xs font-mono uppercase text-ink-400">or continue with</span>
+        <span className="h-px flex-1 bg-ink-100 dark:bg-ink-800" />
+      </div>
+      <SocialLoginButtons /> */}
+
+
+
 
 
             <p className="mt-6 text-sm text-ink-500 text-center">
