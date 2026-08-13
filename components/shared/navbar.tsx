@@ -164,7 +164,7 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                     FixService-Payment
                 </Link>
 
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center  gap-8">
                     {links.map(link => (
                         <Link
                             key={link.href}
@@ -195,7 +195,7 @@ export default function Navbar({ session }: { session: SessionPayload | null }) 
                         </>
                     ) : (
                         <>
-                            <Button asChild variant="ghost">
+                            <Button asChild variant="accent">
                                 <Link href="/login">Sign in</Link>
                             </Button>
                             <Button asChild variant="accent">

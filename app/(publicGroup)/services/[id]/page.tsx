@@ -18,10 +18,21 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     return (
         <div className="mx-auto max-w-4xl px-5 py-12">
 
-            <Link href="/services" className="text-sm text-ink-500 hover:text-rust-600 font-mono">
+            {/* <Link href="/services" className="text-sm text-ink-500 hover:text-rust-600 font-mono">
+                ← Back to services
+            </Link> */}
+
+            {/* <Link href="/services" className="text-sm text-ink-500 text-white-400 hover:text-rust-600 font-mono">
+                ← Back to services
+            </Link> */}
+
+
+            <Link
+                href="/services"
+                className="text-sm font-mono text-slate-500 hover:text-rust-600 dark:text-slate-300 dark:hover:text-rust-400 transition-colors"
+            >
                 ← Back to services
             </Link>
-
 
             <div className="docket mt-6 p-8">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -49,7 +60,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                     </p>
                 )}
 
-                <div className="mt-8 pt-6 border-t border-ink-100">
+                {/* <div className="mt-8 pt-6 border-t border-ink-100">
 
                     <Button asChild variant="accent" size="lg" className="w-full sm:w-auto">
                         <Link href={`/book/${service.id}`}>Request this job →</Link>
@@ -59,7 +70,30 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                         You will need to sign in as a customer to complete a booking.
                     </p>
 
+                </div> */}
+
+                <div className="mt-8 pt-6 border-t border-ink-100 dark:border-ink-800">
+                    {/* <Button asChild variant="accent" size="lg" className="w-full sm:w-auto">
+                        <Link href={`/book/${service.id}`}>Request this job →</Link>
+                    </Button> */}
+
+                    <Button
+                        asChild
+                        variant="accent"
+                        size="lg"
+                        className="w-full sm:w-auto bg-amber-500 text-slate-950 hover:bg-amber-400 dark:bg-amber-400 dark:text-slate-950 dark:hover:bg-amber-300"
+                    >
+                        <Link href={`/book/${service.id}`}>Request this job →</Link>
+                    </Button>
+
+
+                    <p className="mt-2 text-xs text-ink-400 dark:text-ink-500">
+                        You will need to sign in as a customer to complete a booking.
+                    </p>
                 </div>
+
+
+
             </div>
 
             {technician && (

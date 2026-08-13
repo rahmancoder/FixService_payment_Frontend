@@ -32,7 +32,8 @@ export default async function ServicesPage({
                 <h1 className="mt-4 font-display text-3xl md:text-4xl font-bold text-ink-950">
                     Browse services
                 </h1>
-                <p className="mt-2 text-ink-500">
+
+                <p className="mt-2 text-ink-500 dark:text-slate-400">
                     {services.meta?.total ?? services.data.length} job{(services.meta?.total ?? 0) !== 1 ? 's' : ''} listed by verified technicians.
                 </p>
             </div>

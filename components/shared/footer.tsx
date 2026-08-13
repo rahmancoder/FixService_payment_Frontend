@@ -1,9 +1,23 @@
+import { FaFacebook, FaInstagram, FaLinkedin, FaXTwitter, FaGithub, FaYoutube, } from 'react-icons/fa6';
+import { IoMail } from 'react-icons/io5';
 import Link from 'next/link';
+
+const socials = [
+
+    // { href: 'https://facebook.com', label: 'Facebook', Icon: FaFacebook },
+    { href: 'https://www.linkedin.com/in/md-mustafizur-rahman-sayem/', label: 'LinkedIn', Icon: FaLinkedin },
+    // { href: 'https://instagram.com', label: 'Instagram', Icon: FaInstagram },
+    // { href: 'https://twitter.com', label: 'Twitter / X', Icon: FaXTwitter },
+    { href: 'https://github.com/rahmancoder', label: 'GitHub', Icon: FaGithub },
+    { href: 'https://www.youtube.com/@mdmustafizurrahman', label: 'YouTube', Icon: FaYoutube },
+    { href: 'mailto:sayhemrahman@gmail.com', label: 'Email', Icon: IoMail },
+];
 
 export default function Footer() {
     return (
         <footer className="border-t border-ink-100 bg-ink-950 text-ink-100">
             <div className="mx-auto max-w-6xl px-5 py-14 grid gap-10 md:grid-cols-4">
+
                 <div>
                     <div className="flex items-center gap-2 font-display text-lg font-bold text-white">
                         <span className="flex h-8 w-8 items-center justify-center rounded bg-rust text-white font-mono text-sm">
@@ -13,25 +27,36 @@ export default function Footer() {
                     </div>
                     <p className="mt-3 text-sm text-ink-300 max-w-xs">
                         Verified technicians, transparent pricing, and jobs tracked from request to
-                        completion
+                        completion.
                     </p>
+                    <div className="mt-4 flex items-center gap-3">
+                        {socials.map(({ href, label, Icon }) => (
+                            <a
+                                key={href}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={label}
+                                className="flex h-8 w-8 items-center justify-center rounded border border-ink-800 text-ink-300 hover:text-rust hover:border-rust/50 transition-colors"
+                            >
+                                <Icon className="h-4 w-4" />
+                            </a>
+                        ))}
+                    </div>
                 </div>
 
                 <div>
                     <h4 className="font-mono text-xs uppercase tracking-wider text-ink-300 mb-3">Customers</h4>
                     <ul className="space-y-2 text-sm">
-
                         <li><Link href="/services" className="hover:text-rust transition-colors">Browse services</Link></li>
                         <li><Link href="/technicians" className="hover:text-rust transition-colors">Find a technician</Link></li>
                         <li><Link href="/register" className="hover:text-rust transition-colors">Create an account</Link></li>
                     </ul>
-
                 </div>
 
                 <div>
                     <h4 className="font-mono text-xs uppercase tracking-wider text-ink-300 mb-3">Technicians</h4>
                     <ul className="space-y-2 text-sm">
-
                         <li><Link href="/register" className="hover:text-rust transition-colors">Join as a Technician</Link></li>
                         <li><Link href="/login" className="hover:text-rust transition-colors">Technician sign in</Link></li>
                     </ul>
@@ -39,21 +64,17 @@ export default function Footer() {
 
                 <div>
                     <h4 className="font-mono text-xs uppercase tracking-wider text-ink-300 mb-3">Categories</h4>
-
                     <ul className="space-y-2 text-sm text-ink-300">
                         <li>Plumbing</li>
                         <li>Electrical</li>
                         <li>Cleaning</li>
                         <li>Painting</li>
                     </ul>
-
                 </div>
             </div>
 
             <div className="border-t border-ink-800">
-
                 <div className="mx-auto max-w-6xl px-5 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-ink-300 font-mono">
-
                     <span>© {new Date().getFullYear()} FixService-Payment. MD MUSTAFIZUR RAHMAN All rights reserved .</span>
                     <span>Built with Next.js</span>
                 </div>

@@ -22,8 +22,9 @@ export default async function TechniciansPage({
             <div className="border-b border-ink-100 pb-8 mb-8">
                 <Badge variant="warning">Verified pros</Badge>
                 <h1 className="mt-4 font-display text-3xl md:text-4xl font-bold text-ink-950">Find a technician</h1>
-                <p className="mt-2 text-ink-500">
-                    {technicians?.meta?.total ?? technicians?.data?.length ?? 0} technicians ready to take the job.
+
+                <p className="mt-2 text-ink-500 dark:text-slate-300">
+                    {technicians.meta?.total ?? technicians.data.length} technicians ready to take the job.
                 </p>
             </div>
 

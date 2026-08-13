@@ -7,6 +7,12 @@ import ServiceCard from './_components/services/ServiceCard';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
+import { ShieldCheck, Wallet, Clock, Star } from 'lucide-react';
+import FaqItem from './_components/FaqItem';
+import NewsletterForm from './_components/NewsLetterForm';
+
+
+
 export const revalidate = 300; // ISR: rebuild this page every 5 minutes
 
 async function getHomeData() {
@@ -184,8 +190,8 @@ export default async function HomePage() {
                 <section className="mx-auto max-w-6xl px-5 py-20">
                     <div className="flex items-end justify-between flex-wrap gap-4">
                         <div>
-                            <h2 className="font-display text-3xl font-bold text-ink-950">Fresh on the docket</h2>
-                            <p className="mt-2 text-ink-500 dark:text-ink-200">Recently listed services from our technicians.</p>
+                            <h2 className="font-display text-3xl font-bold text-ink-950 dark:text-white">Fresh on the docket</h2>
+                            <p className="mt-2 text-ink-500 dark:text-ink-400">Recently listed services from our technicians.</p>
                         </div>
                         <Link href="/services" className="text-sm font-medium text-rust-600 hover:text-rust-700 transition-colors">
                             Browse all →
@@ -200,13 +206,65 @@ export default async function HomePage() {
                 </section>
             )}
 
-            {/* ---------- CTA ---------- */}
-            <section className="mx-auto max-w-6xl px-5 pb-24">
 
+            {/* ---------- Why FixItNow (trust + highlights) ---------- */}
+            <section className="mx-auto max-w-6xl px-5 py-20">
+                <Badge variant="warning">Why FixItNow</Badge>
+                <h2 className="mt-4 font-display text-3xl font-bold text-ink-950 dark:text-white">
+                    Built so nobody has to just trust a stranger with a wrench.
+                </h2>
+                <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                    {[
+                        { icon: ShieldCheck, title: 'Verified technicians', desc: 'Every pro lists real, checkable skills and pricing on a public profile.' },
+                        { icon: Wallet, title: 'Pay only on acceptance', desc: "You're never charged until a technician actually accepts your job." },
+                        { icon: Clock, title: 'Status you can track', desc: 'Every booking moves through the same visible stages, start to finish.' },
+                        { icon: Star, title: 'Reviews from real jobs', desc: "Ratings only appear after a booking is marked completed — no fake reviews." },
+                    ].map(item => (
+                        <div key={item.title} className="docket p-5">
+                            <item.icon className="h-6 w-6 text-rust-600" />
+                            <h3 className="mt-3 font-display font-semibold text-ink-950 dark:text-white">{item.title}</h3>
+                            <p className="mt-1.5 text-sm text-ink-500 dark:text-ink-400">{item.desc}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* ---------- FAQ ---------- */}
+            <section className="border-t border-ink-100 dark:border-ink-800">
+                <div className="mx-auto max-w-3xl px-5 py-20">
+                    <Badge variant="warning">FAQ</Badge>
+                    <h2 className="mt-4 font-display text-3xl font-bold text-ink-950 dark:text-white">Common questions</h2>
+                    <div className="mt-8 space-y-3">
+                        <FaqItem
+                            question="When do I actually get charged?"
+                            answer="Never before a technician accepts your booking. Once they do, a 'Pay now' button appears on your booking page and you're taken to Stripe Checkout. If nobody accepts, you're never charged."
+                        />
+                        <FaqItem
+                            question="Can I cancel a booking?"
+                            answer="Yes, any time before the job status reaches IN_PROGRESS. After that, the technician is assumed to already be on site, so cancellation is disabled at that point."
+                        />
+                        <FaqItem
+                            question="How do technician ratings work?"
+                            answer="A customer can only leave a review after their booking is marked COMPLETED, and only once per booking. A technician's average rating is recalculated automatically from every review they've received."
+                        />
+                        <FaqItem
+                            question="What happens if I'm not happy with a job?"
+                            answer="Reach out through the Contact page with your booking ID — our team reviews disputes on a case-by-case basis."
+                        />
+                        <FaqItem
+                            question="How do I become a technician on FixItNow?"
+                            answer="Register and choose 'I'm a technician' — you'll get a dashboard to set your bio, skills, hourly rate, weekly availability, and list your first service immediately."
+                        />
+                    </div>
+                </div>
+            </section>
+
+            {/* ---------- CTA ---------- */}
+            <section className="mx-auto max-w-6xl px-5 py-20">
                 <div className="grid md:grid-cols-2 gap-5">
-                    <div className="docket p-8 bg-rust-50 border-rust/20">
-                        <h3 className="font-display text-2xl font-bold text-ink-950">Need something fixed?</h3>
-                        <p className="mt-2 text-ink-600 text-sm max-w-sm">
+                    <div className="docket p-8 bg-rust-50 dark:bg-rust-500/10 border-rust/20">
+                        <h3 className="font-display text-2xl font-bold text-ink-950 dark:text-white">Need something fixed?</h3>
+                        <p className="mt-2 text-ink-600 dark:text-ink-300 text-sm max-w-sm">
                             Create an account, browse trusted technicians, and book your first job in minutes.
                         </p>
                         <Button asChild variant="accent" className="mt-6">
@@ -219,12 +277,33 @@ export default async function HomePage() {
                             List your services, set your availability, and get booked directly by customers near you.
                         </p>
                         <Button asChild variant="accent" className="mt-6">
-                            <Link href="/register">Join as a Technician →</Link>
+                            <Link href="/register">Join as a pro →</Link>
                         </Button>
                     </div>
                 </div>
-
             </section>
+
+            {/* ---------- Newsletter ---------- */}
+            <section className="border-t border-ink-100 dark:border-ink-800 bg-ink-950">
+                <div className="mx-auto max-w-6xl px-5 py-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div>
+                        <h3 className="font-display text-2xl font-bold text-white">Get notified about new trades near you</h3>
+                        <p className="mt-1.5 text-sm text-ink-300">No spam — just new categories and technician launches.</p>
+                    </div>
+                    <NewsletterForm />
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
         </>
     );
 }
