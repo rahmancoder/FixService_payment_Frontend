@@ -57,13 +57,18 @@ export default async function HomePage() {
 
                         <Badge variant="warning" className="mb-6">Job Services #001 — Open for work</Badge>
                         <h1 className="font-display text-4xl md:text-6xl font-bold leading-[1.05] text-ink-950">
-                            Get it fixed, <span className="text-rust">tracked start to finish.</span>
+                            <span className="text-rust">Get it fixed, tracked start to finish.</span>
                         </h1>
 
-                        <p className="mt-5 text-lg text-ink-500 max-w-lg">
+                        {/* <p className="mt-5 text-lg text-ink-500 max-w-lg">
+                            Book verified plumbers, electricians, cleaners and painters. Every job gets a
+                            paper trail — request, accept, pay, complete — so you always know where things stand.
+                        </p> */}
+                        <p className="mt-5 text-lg text-ink-500 dark:text-ink-200 max-w-lg">
                             Book verified plumbers, electricians, cleaners and painters. Every job gets a
                             paper trail — request, accept, pay, complete — so you always know where things stand.
                         </p>
+
 
                         <form action="/services" className="mt-8 flex flex-col sm:flex-row gap-3 max-w-xl">
                             <input
@@ -77,7 +82,7 @@ export default async function HomePage() {
                             </Button>
                         </form>
 
-                        <div className="mt-8 flex items-center gap-6 text-sm font-mono text-ink-500">
+                        <div className="mt-8 flex items-center gap-6 text-sm font-mono text-ink-500 dark:text-ink-200">
                             <span>{technicianCount}+ technicians</span>
                             <span className="w-1 h-1 rounded-full bg-ink-200" />
 
@@ -116,7 +121,7 @@ export default async function HomePage() {
             <section className="mx-auto max-w-6xl px-5 py-20">
 
                 <h2 className="font-display text-3xl font-bold text-ink-950">How a job moves through the docket</h2>
-                <p className="mt-2 text-ink-500 max-w-xl">
+                <p className="mt-2 text-ink-500 dark:text-ink-200 max-w-xl">
                     Four stages, always visible, from the moment you request work to the moment it is signed off.
                 </p>
 
@@ -180,7 +185,7 @@ export default async function HomePage() {
                     <div className="flex items-end justify-between flex-wrap gap-4">
                         <div>
                             <h2 className="font-display text-3xl font-bold text-ink-950">Fresh on the docket</h2>
-                            <p className="mt-2 text-ink-500">Recently listed services from our technicians.</p>
+                            <p className="mt-2 text-ink-500 dark:text-ink-200">Recently listed services from our technicians.</p>
                         </div>
                         <Link href="/services" className="text-sm font-medium text-rust-600 hover:text-rust-700 transition-colors">
                             Browse all →

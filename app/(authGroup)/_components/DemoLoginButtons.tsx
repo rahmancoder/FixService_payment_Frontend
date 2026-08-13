@@ -23,8 +23,8 @@ export default function DemoLoginButtons({ next }: { next?: string }) {
     }
 
     return (
-        <div className="rounded border border-dashed border-ink-200 dark:border-ink-700 p-4">
-            <p className="field-label">Quick demo login</p>
+        <div className="rounded border border-dashed border-ink-200 dark:border-ink-200 p-4">
+            <p className="field-label dark:text-ink-200">Quick demo login</p>
             <div className="grid grid-cols-3 gap-2">
                 {DEMO_ACCOUNTS.map(account => (
                     <Button

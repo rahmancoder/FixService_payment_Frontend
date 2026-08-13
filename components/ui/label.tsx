@@ -1,22 +1,48 @@
-'use client';
+// 'use client';
 
-import * as React from 'react';
+// import * as React from 'react';
+// import * as LabelPrimitive from '@radix-ui/react-label';
+// import { cn } from '@/lib/utils';
+
+// const Label = React.forwardRef<
+//     React.ElementRef<typeof LabelPrimitive.Root>,
+//     React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
+// >(({ className, ...props }, ref) => (
+//     <LabelPrimitive.Root
+//         ref={ref}
+//         className={cn(
+//             'block text-xs font-mono uppercase tracking-wide text-ink-500 mb-1.5 peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+//             className
+//         )}
+//         {...props}
+//     />
+// ));
+// Label.displayName = LabelPrimitive.Root.displayName;
+
+// export { Label };
+
+
+import * as React from "react"
 import * as LabelPrimitive from '@radix-ui/react-label';
-import { cn } from '@/lib/utils';
 
-const Label = React.forwardRef<
-    React.ElementRef<typeof LabelPrimitive.Root>,
-    React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
->(({ className, ...props }, ref) => (
-    <LabelPrimitive.Root
-        ref={ref}
-        className={cn(
-            'block text-xs font-mono uppercase tracking-wide text-ink-500 mb-1.5 peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
-            className
-        )}
-        {...props}
-    />
-));
-Label.displayName = LabelPrimitive.Root.displayName;
+import { cn } from "@/lib/utils"
 
-export { Label };
+// export interface LabelPropsextends React.LabelHTMLAttributes < HTMLLabelElement > {}
+
+export type LabelProps = React.LabelHTMLAttributes<HTMLLabelElement>;
+
+const Label = React.forwardRef<HTMLLabelElement, LabelProps>(
+    ({ className, ...props }, ref) => (
+        <label
+            ref={ref}
+            className={cn(
+                "text-sm font-medium leading-none text-foreground dark:text-ink-200 peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+                className
+            )}
+            {...props}
+        />
+    )
+)
+Label.displayName = "Label"
+
+export { Label }
