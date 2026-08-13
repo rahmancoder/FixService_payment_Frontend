@@ -18,9 +18,16 @@ export default async function DashboardOverviewPage() {
         <div>
             <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
                 <h2 className="font-display text-xl font-semibold text-ink-950 dark:text-white">Recent activity</h2>
-                <Button asChild variant="outline">
+
+                <Button
+                    asChild
+                    variant="outline"
+                    className="dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800 dark:hover:text-white"
+                >
                     <Link href="/services">Book a new service →</Link>
                 </Button>
+
+
             </div>
 
             <BookingList
