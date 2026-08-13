@@ -35,9 +35,9 @@ export default async function AboutPage() {
             <p className="mt-4 text-lg text-ink-600 dark:text-ink-300 max-w-2xl">
                 FixService-Payment started from a simple frustration: hiring a plumber or electrician
                 usually means a phone call, a vague promise, and no idea whether the price you
-                agreed on is the price you'll pay. We built a platform where every step of a
+                agreed on is the price you will pay. We built a platform where every step of a
                 job — request, acceptance, payment, completion — is logged and visible to both
-                sides, like a work order that can't get lost.
+                sides, like a work order that can not get lost.
             </p>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -60,7 +60,7 @@ export default async function AboutPage() {
                     <h2 className="font-display text-xl font-semibold text-ink-950 dark:text-white">How we vet technicians</h2>
                     <p className="mt-2 text-ink-600 dark:text-ink-300 text-sm leading-relaxed">
                         Technicians register with a verified profile, list their real skills and
-                        pricing, and build a public rating from completed jobs only — reviews can't
+                        pricing, and build a public rating from completed jobs only — reviews can not
                         be left until a booking is marked <code className="text-xs">COMPLETED</code>,
                         so every star on a profile maps to an actual finished job.
                     </p>
@@ -69,8 +69,8 @@ export default async function AboutPage() {
                     <h2 className="font-display text-xl font-semibold text-ink-950 dark:text-white">How payment protection works</h2>
                     <p className="mt-2 text-ink-600 dark:text-ink-300 text-sm leading-relaxed">
                         You never pay upfront. A technician has to accept your booking first — only
-                        then does the "Pay now" button appear, and payment runs through Stripe
-                        Checkout. If a technician never accepts, you're never charged.
+                        then does the Pay now button appear, and payment runs through Stripe
+                        Checkout. If a technician never accepts, you are never charged.
                     </p>
                 </div>
             </div>
