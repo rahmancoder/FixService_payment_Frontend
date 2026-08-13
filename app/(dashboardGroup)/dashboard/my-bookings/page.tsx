@@ -17,7 +17,7 @@ export default async function MyBookingsPage() {
     return (
         <div className="space-y-8">
             <section>
-                <h2 className="font-mono text-xs uppercase tracking-wide text-ink-400 mb-3">
+                <h2 className="font-mono text-xs uppercase tracking-wide text-ink-400 dark:text-ink-500 mb-3">
                     In progress ({active.length})
                 </h2>
                 <BookingList
@@ -30,7 +30,7 @@ export default async function MyBookingsPage() {
 
             {past.length > 0 && (
                 <section>
-                    <h2 className="font-mono text-xs uppercase tracking-wide text-ink-400 mb-3">
+                    <h2 className="font-mono text-xs uppercase tracking-wide text-ink-400 dark:text-ink-500 mb-3">
                         History ({past.length})
                     </h2>
                     <BookingList
