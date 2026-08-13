@@ -73,30 +73,47 @@ export default function BookingActions({ booking }: { booking: Booking }) {
             )}
 
             {canCancel && (
-                <Button variant="outline" className="w-full" onClick={handleCancel} disabled={isPending}>
+                <Button
+                    variant="outline"
+                    className="w-full border-ink-200 dark:border-ink-700 text-ink-900 dark:text-ink-100 dark:bg-ink-800/50 hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
+                    onClick={handleCancel}
+                    disabled={isPending}
+                >
                     {isPending ? 'Cancelling…' : 'Cancel booking'}
                 </Button>
             )}
 
             {canReview && (
-                <form onSubmit={handleSubmit(onReviewSubmit)} className="rounded border border-ink-100 dark:border-ink-800 p-4 space-y-3" noValidate>
-                    <p className="field-label">Leave a review</p>
+                <form
+                    onSubmit={handleSubmit(onReviewSubmit)}
+                    className="rounded border border-ink-100 dark:border-ink-800 bg-white/50 dark:bg-ink-900/50 p-4 space-y-3"
+                    noValidate
+                >
+                    <p className="field-label text-ink-900 dark:text-ink-100 font-medium text-sm">Leave a review</p>
                     <div className="flex gap-1">
                         {[1, 2, 3, 4, 5].map(star => (
                             <button
                                 key={star}
                                 type="button"
                                 onClick={() => setValue('rating', star, { shouldValidate: true })}
-                                className={`text-2xl ${star <= rating ? 'text-rust' : 'text-ink-100'}`}
+                                className={`text-2xl transition-colors ${star <= rating ? 'text-rust' : 'text-ink-200 dark:text-ink-700 hover:text-ink-400'
+                                    }`}
                                 aria-label={`${star} stars`}
                             >
                                 ★
                             </button>
                         ))}
                     </div>
-                    {errors.rating && <p className="text-xs text-brick">{errors.rating.message}</p>}
-                    <Textarea {...register('comment')} rows={3} placeholder="How did the job go?" />
-                    {errors.comment && <p className="text-xs text-brick">{errors.comment.message}</p>}
+                    {errors.rating && <p className="text-xs text-brick dark:text-red-400">{errors.rating.message}</p>}
+
+                    <Textarea
+                        {...register('comment')}
+                        rows={3}
+                        placeholder="How did the job go?"
+                        className="dark:bg-ink-950 dark:border-ink-800 dark:text-ink-100 dark:placeholder:text-ink-500"
+                    />
+                    {errors.comment && <p className="text-xs text-brick dark:text-red-400">{errors.comment.message}</p>}
+
                     <Button type="submit" className="w-full" disabled={isPending}>
                         {isPending ? 'Submitting…' : 'Submit review'}
                     </Button>
@@ -104,7 +121,7 @@ export default function BookingActions({ booking }: { booking: Booking }) {
             )}
 
             {booking.review && (
-                <div className="rounded bg-moss-50 border border-moss-500/20 p-4 text-sm text-moss-600">
+                <div className="rounded bg-moss-50 dark:bg-moss-950/40 border border-moss-500/20 dark:border-moss-500/40 p-4 text-sm text-moss-600 dark:text-moss-400">
                     You rated this job {booking.review.rating}★. Thanks for the feedback!
                 </div>
             )}

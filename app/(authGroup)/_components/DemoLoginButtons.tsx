@@ -11,7 +11,6 @@ const DEMO_ACCOUNTS = [
     { label: 'Admin', email: 'mustafiz@admin.com', password: 'mustafiz12345' },
 ] as const;
 
-
 export default function DemoLoginButtons({ next }: { next?: string }) {
     const [isPending, startTransition] = useTransition();
 
@@ -23,8 +22,8 @@ export default function DemoLoginButtons({ next }: { next?: string }) {
     }
 
     return (
-        <div className="rounded border border-dashed border-ink-200 dark:border-ink-200 p-4">
-            <p className="field-label dark:text-ink-200">Quick demo login</p>
+        <div className="rounded border border-dashed border-ink-200 dark:border-ink-800 p-4 bg-transparent dark:bg-ink-900/30 dark:text-white">
+            <p className="field-label text-ink-600 dark:text-ink-400 mb-2 text-xs font-mono uppercase tracking-wider">Quick demo login</p>
             <div className="grid grid-cols-3 gap-2">
                 {DEMO_ACCOUNTS.map(account => (
                     <Button
@@ -34,6 +33,7 @@ export default function DemoLoginButtons({ next }: { next?: string }) {
                         size="sm"
                         disabled={isPending}
                         onClick={() => handleDemoLogin(account.email, account.password)}
+                        className="border border-transparent hover:border-ink-300 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-200 dark:hover:bg-ink-700 dark:hover:text-white dark:hover:border-ink-500 shadow-sm hover:shadow transition-all duration-200 active:scale-[0.98]"
                     >
                         {account.label}
                     </Button>
