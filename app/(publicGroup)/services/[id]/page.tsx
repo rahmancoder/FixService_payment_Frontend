@@ -18,14 +18,6 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     return (
         <div className="mx-auto max-w-4xl px-5 py-12">
 
-            {/* <Link href="/services" className="text-sm text-ink-500 hover:text-rust-600 font-mono">
-                ← Back to services
-            </Link> */}
-
-            {/* <Link href="/services" className="text-sm text-ink-500 text-white-400 hover:text-rust-600 font-mono">
-                ← Back to services
-            </Link> */}
-
 
             <Link
                 href="/services"
