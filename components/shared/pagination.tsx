@@ -28,11 +28,9 @@ export default function Pagination({
                     ← Prev
                 </Link>
             </Button>
-
-            <span className="px-3 text-ink-500">
+            <span className="px-3 text-ink-500 dark:text-ink-400">
                 Page {currentPage} of {totalPages}
             </span>
-
             <Button asChild variant="outline" className={currentPage === totalPages ? 'pointer-events-none opacity-40' : ''}>
                 <Link href={hrefFor(Math.min(totalPages, currentPage + 1))} aria-disabled={currentPage === totalPages}>
                     Next →

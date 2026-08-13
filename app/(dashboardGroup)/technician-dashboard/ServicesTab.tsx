@@ -3,13 +3,12 @@
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-
+import { deleteService } from '../_actions/serviceActions';
 import { Category, Service } from '@/lib/types';
 import { formatCurrency } from '@/lib/utils';
 import ServiceFormDialog from '../_components/ServiceFormDialog';
 import EmptyState from '@/components/shared/empty-state';
 import { Button } from '@/components/ui/button';
-import { deleteService } from '../_actions/serviceActions';
 
 export default function ServicesTab({ services, categories }: { services: Service[]; categories: Category[] }) {
     const router = useRouter();
@@ -43,8 +42,8 @@ export default function ServicesTab({ services, categories }: { services: Servic
                     {services.map(service => (
                         <div key={service.id} className="docket p-5 flex items-center justify-between gap-4 flex-wrap">
                             <div>
-                                <h3 className="font-display font-semibold text-ink-950">{service.title}</h3>
-                                <p className="text-sm text-ink-500">{service.category?.name}</p>
+                                <h3 className="font-display font-semibold text-ink-950 dark:text-white">{service.title}</h3>
+                                <p className="text-sm text-ink-500 dark:text-ink-400">{service.category?.name}</p>
                             </div>
                             <div className="flex items-center gap-3">
                                 <span className="font-mono font-semibold text-rust-600">{formatCurrency(service.price)}</span>

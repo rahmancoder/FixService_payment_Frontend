@@ -41,37 +41,41 @@ export default function AvailabilityTab({ availability }: { availability: Availa
     }
 
     return (
-        <div className="docket p-6 max-w-2xl">
+        <div className="docket p-6 max-w-2xl rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-sm">
             <div className="space-y-3">
                 {slots.map(slot => (
-                    <div key={slot.dayOfWeek} className="flex items-center gap-4 py-2 border-b border-dashed border-ink-100 last:border-none">
-                        <label className="flex items-center gap-2 w-32 shrink-0">
+                    <div key={slot.dayOfWeek} className="flex items-center gap-4 py-2 border-b border-dashed border-slate-200 dark:border-slate-800 last:border-none">
+                        <label className="flex items-center gap-2 w-32 shrink-0 cursor-pointer">
                             <Checkbox
                                 checked={slot.isActive}
                                 onCheckedChange={checked => updateSlot(slot.dayOfWeek, { isActive: checked === true })}
                             />
-                            <span className="text-sm font-medium text-ink-900">{slot.dayOfWeek.slice(0, 3)}</span>
+                            <span className="text-sm font-medium text-slate-800 dark:text-slate-200">{slot.dayOfWeek.slice(0, 3)}</span>
                         </label>
                         <input
                             type="time"
                             value={slot.startTime}
                             disabled={!slot.isActive}
                             onChange={e => updateSlot(slot.dayOfWeek, { startTime: e.target.value })}
-                            className="flex h-10 rounded-md border border-input bg-white px-3 text-sm disabled:opacity-40"
+                            className="flex h-10 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 px-3 text-sm disabled:opacity-40 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 dark:color-scheme-dark"
                         />
-                        <span className="text-ink-400 text-sm">to</span>
+                        <span className="text-slate-500 dark:text-slate-400 text-sm">to</span>
                         <input
                             type="time"
                             value={slot.endTime}
                             disabled={!slot.isActive}
                             onChange={e => updateSlot(slot.dayOfWeek, { endTime: e.target.value })}
-                            className="flex h-10 rounded-md border border-input bg-white px-3 text-sm disabled:opacity-40"
+                            className="flex h-10 rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 px-3 text-sm disabled:opacity-40 focus:outline-none focus:ring-2 focus:ring-slate-400 dark:focus:ring-slate-600 dark:color-scheme-dark"
                         />
                     </div>
                 ))}
             </div>
 
-            <Button variant="accent" className="w-full mt-6" onClick={handleSave} disabled={isPending}>
+            <Button
+                className="w-full mt-6 bg-rust hover:bg-rust/90 text-white dark:bg-rust dark:text-white"
+                onClick={handleSave}
+                disabled={isPending}
+            >
                 {isPending ? 'Saving…' : 'Save availability'}
             </Button>
         </div>

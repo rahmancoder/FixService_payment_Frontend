@@ -8,13 +8,14 @@ import { Booking, BookingStatus } from '@/lib/types';
 import BookingList from '../_components/BookingList';
 import { Button } from '@/components/ui/button';
 
-const nextActions: Partial<Record<BookingStatus, { label: string; status: BookingStatus; variant: 'accent' | 'outline' }[]>> = {
+// Changed 'accent' -> 'default' and 'outline' -> 'destructive' or standard 'outline'
+const nextActions: Partial<Record<BookingStatus, { label: string; status: BookingStatus; variant: 'default' | 'outline' | 'destructive' }[]>> = {
     REQUESTED: [
-        { label: 'Accept', status: 'ACCEPTED', variant: 'accent' },
-        { label: 'Decline', status: 'DECLINED', variant: 'outline' },
+        { label: 'Accept', status: 'ACCEPTED', variant: 'default' },
+        { label: 'Decline', status: 'DECLINED', variant: 'destructive' },
     ],
-    PAID: [{ label: 'Start job', status: 'IN_PROGRESS', variant: 'accent' }],
-    IN_PROGRESS: [{ label: 'Mark completed', status: 'COMPLETED', variant: 'accent' }],
+    PAID: [{ label: 'Start job', status: 'IN_PROGRESS', variant: 'default' }],
+    IN_PROGRESS: [{ label: 'Mark completed', status: 'COMPLETED', variant: 'default' }],
 };
 
 const successMessage: Partial<Record<BookingStatus, string>> = {
